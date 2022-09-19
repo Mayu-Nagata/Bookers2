@@ -1,0 +1,24 @@
+<%=render 'users/list', user: @user, book: @newbook %>
+
+
+  <div class="col-md-8 offset-md-1">
+    <h2>Book detail</h2>
+    <table class="table">
+     <tbody>
+      <tr>
+       <td><%=link_to user_path(@book.user.id) do %><%= image_tag @book.user.get_profile_image(100,100) %><br>
+       <%= @user.name %><% end %>
+       </td>
+       <td><%=@book.title %></td>
+       <td><%=@book.body %></td>
+       <% if @book.user == current_user %>
+       <td><button type="submit" class="btn btn-success"><%= link_to edit_book_path(@book.id), class:"text-light" do %><%="Edit" %><% end %></button></td>
+       <td><button type="submit" class="btn btn-danger"><%= link_to book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"text-light" do %><%="Destroy" %><% end %></td>
+       <% end %>
+      </tr>
+     </t>
+     </tbody>
+    </table>
+
+  </div>
+</div>
